@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   # http_verb 'url', to: '{controller}#{method}'
 
-  get '/', to: 'places#index'
+  resources 'users'
+
+  # get all of  the comments for the user where user_id = :id,
+  get '/users/:id/comments', to: 'comments#index'
+
+
+  get '/places', to: 'places#index'
   get '/places/:id', to: 'places#show'
   get '/places/new', to: 'places#new'
   post '/places/', to: 'places#create'
