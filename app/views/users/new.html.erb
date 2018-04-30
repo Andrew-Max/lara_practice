@@ -1,0 +1,13 @@
+<div class="user-form">
+  User Form
+
+  <%= simple_form_for @user do |form| %>
+    <%= form.input :name %>
+    <%= form.input :email %>
+    <%= form.submit "Submit" %>
+  <% end %>
+</div>
+
+<div class="users-index-link">
+  <%=  link_to "Go Home", users_path %>
+</div>
