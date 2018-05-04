@@ -17,14 +17,32 @@ class UsersController < ApplicationController
 
   #post /users
   def create
-    user = User.create(user_params)
+    @user = User.create(user_params)
     redirect_to user_path(user)
   end
 
+  #get /users/:id/edit
   def edit
+    @user = current_user.find(params[:id])
   end
 
+  #put /users/:id/
   def update
+    @user = current_user.find(params[:id])
+
+    @user.update_attributes(user_params)
+      if @user.valid?
+        redirect_to user_path(user)
+      else
+    render :edit, status: :unprocessable_entity
+    end
+  end
+
+  #delete /user/:id
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to user_path(user)
   end
 
   private
