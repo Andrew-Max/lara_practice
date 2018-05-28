@@ -1,4 +1,7 @@
 <ul>
+<%= link_to "Edit #{@user.name}", edit_user_path(@user) %>
+<%#= link_to "Delete #{@user.name}", method: delete, destroy_user_path(@user) %>
+
   <li><%=  @user.name %></li>
   <li><%=  @user.email %></li>
 </ul>

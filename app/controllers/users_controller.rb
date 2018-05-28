@@ -23,16 +23,16 @@ class UsersController < ApplicationController
 
   #get /users/:id/edit
   def edit
-    @user = current_user.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   #put /users/:id/
   def update
-    @user = current_user.find(params[:id])
+    @user = User.find(params[:id])
 
     @user.update_attributes(user_params)
       if @user.valid?
-        redirect_to user_path(user)
+        redirect_to user_path(@user)
       else
     render :edit, status: :unprocessable_entity
     end
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to user_path(user)
+    redirect_to users_path
   end
 
   private
